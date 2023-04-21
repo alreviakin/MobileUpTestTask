@@ -64,6 +64,7 @@ extension GalleryController: UICollectionViewDelegate, UICollectionViewDataSourc
 //MARK: - Action
 extension GalleryController {
     @objc func logout() {
+        AuthService.shared.logout()
     }
 }
 
