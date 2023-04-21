@@ -32,6 +32,20 @@ class AuthService: NSObject, VKSdkDelegate, VKSdkUIDelegate {
         vkSDK.uiDelegate = self
     }
     
+    func wakeUpSession() {
+        let scope = ["wall"]
+        VKSdk.wakeUpSession(scope) { [delegate] state, error in
+            switch state {
+            case .initialized:
+                VKSdk.authorize(scope)
+            case .authorized:
+                delegate?.authServiceSignIn()
+            default:
+                delegate?.authServiceSignInDidFaill()
+            }
+        }
+    }
+    
     func vkSdkAccessAuthorizationFinished(with result: VKAuthorizationResult!) {
         if result.token != nil {
             delegate?.authServiceSignIn()
