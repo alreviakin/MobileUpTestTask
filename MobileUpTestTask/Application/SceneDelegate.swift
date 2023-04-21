@@ -35,6 +35,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate, AuthServiceDelegate {
     
     func authServiceSignIn() {
         print(#function)
+        let navVC = UINavigationController(rootViewController: GalleryController())
+        window?.rootViewController = navVC
     }
     
     func authServiceSignInDidFaill() {
