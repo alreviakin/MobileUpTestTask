@@ -54,7 +54,6 @@
 				F172A9841807AF2CDF1C7CD7 /* Pods-MobileUpTestTask.debug.xcconfig */,
 				FADE3C4B0D736F145293BC1C /* Pods-MobileUpTestTask.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -79,11 +78,11 @@
 		AE0D2E5429F2CB4C006108DC /* MobileUpTestTask */ = {
 			isa = PBXGroup;
 			children = (
-				AE0D2E6E29F2CBA5006108DC /* Views */,
+				AE0D2E6929F2CB64006108DC /* Application */,
 				AE0D2E6D29F2CB9F006108DC /* Model */,
+				AE0D2E6E29F2CBA5006108DC /* Views */,
 				AE0D2E6C29F2CB99006108DC /* Controllers */,
 				AE0D2E6A29F2CB84006108DC /* SupportingFiles */,
-				AE0D2E6929F2CB64006108DC /* Application */,
 			);
 			path = MobileUpTestTask;
 			sourceTree = "<group>";
