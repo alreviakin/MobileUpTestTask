@@ -6,3 +6,9 @@
 //
 
 import Foundation
+
+struct Photo {
+    let date: String
+    let url: URL?
+    var data: Data?
+}
