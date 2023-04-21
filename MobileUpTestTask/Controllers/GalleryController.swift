@@ -32,6 +32,8 @@ class GalleryController: UIViewController {
         title = "MobileUp Gallery"
         view.backgroundColor = .white
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Выход", style: .done, target: self, action: #selector(logout))
+        navigationItem.rightBarButtonItem?.tintColor = .black
+        navigationItem.rightBarButtonItem?.setTitleTextAttributes([NSAttributedString.Key.font: UIFont.systemFont(ofSize: 17, weight: .regular)], for: .normal)
         
         view.addSubview(collection)
         collection.dataSource = self
