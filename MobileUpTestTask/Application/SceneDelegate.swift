@@ -24,7 +24,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate, AuthServiceDelegate {
     
     func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
         if let url = URLContexts.first?.url {
-            print(url)
             VKSdk.processOpen(url, fromApplication: UIApplication.OpenURLOptionsKey.sourceApplication.rawValue)
         }
     }
@@ -34,7 +33,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate, AuthServiceDelegate {
     }
     
     func authServiceSignIn() {
-        print(#function)
         let navVC = UINavigationController(rootViewController: GalleryController())
         window?.rootViewController = navVC
     }
@@ -44,7 +42,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate, AuthServiceDelegate {
     }
     
     func authServiceSignInDidFaill() {
-        print(#function)
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

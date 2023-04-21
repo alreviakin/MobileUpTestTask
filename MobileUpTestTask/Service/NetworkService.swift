@@ -17,7 +17,6 @@ class NetworkService {
         allParams["v"] = API.version
         
         let url = url(from: path, params: allParams)
-        print(url)
         let request = URLRequest(url: url)
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             DispatchQueue.main.async {
