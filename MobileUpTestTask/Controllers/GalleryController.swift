@@ -19,11 +19,12 @@ class GalleryController: UIViewController {
         let collection = UICollectionView(frame: .zero, collectionViewLayout: layout)
         return collection
     }()
+    private var photos = [Photo]()
     
     //MARK: - Configure UI
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        request()
         configure()
         layout()
     }
@@ -38,7 +39,7 @@ class GalleryController: UIViewController {
         view.addSubview(collection)
         collection.dataSource = self
         collection.delegate = self
-        collection.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "cell")
+        collection.register(PhotosCell.self, forCellWithReuseIdentifier: "cell")
     }
     
     func layout() {
@@ -52,13 +53,13 @@ class GalleryController: UIViewController {
 //MARK: - Collection Configure
 extension GalleryController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        10
+        return photos.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
-        let imageView = UIImageView(image: UIImage(named: "1"))
-        cell.backgroundView = imageView
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! PhotosCell
+        cell.configure(with: photos[indexPath.row])
+        
         return cell
     }
 }
@@ -67,6 +68,27 @@ extension GalleryController: UICollectionViewDelegate, UICollectionViewDataSourc
 extension GalleryController {
     @objc func logout() {
         AuthService.shared.logout()
+    }
+}
+
+//MARK: Request
+extension GalleryController {
+    func request() {
+        NetworkService.shared.request(path: API.photosGet, params: ["owner_id": "-128666765", "album_id": "266310117"]) {[weak self] photos, error in
+            guard let self else {return}
+            if let photos = photos {
+                for responsePhoto in photos.response.items {
+                    let dateFormater = DateFormatter()
+                    dateFormater.locale = Locale(identifier: "ru_Ru")
+                    dateFormater.dateFormat = "dd MMMM yyyy"
+                    let date = Date(timeIntervalSince1970: TimeInterval(responsePhoto.date))
+                    let url = URL(string: responsePhoto.sizes.last!.url)
+                    let photo = Photo(date: dateFormater.string(from: date), url: url)
+                    self.photos.append(photo)
+                }
+                collection.reloadData()
+            }
+        }
     }
 }
 
