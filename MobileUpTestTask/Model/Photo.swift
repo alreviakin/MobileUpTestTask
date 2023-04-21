@@ -7,8 +7,14 @@
 
 import Foundation
 
-struct Photo {
+class Photo {
     let date: String
     let url: URL?
-    var data: Data?
+    var data: Data? = nil
+    
+    init(date: String, url: URL?, data: Data? = nil) {
+        self.date = date
+        self.url = url
+        self.data = data
+    }
 }
