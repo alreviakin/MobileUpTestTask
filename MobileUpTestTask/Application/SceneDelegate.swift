@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SceneDelegate: UIResponder, UIWindowSceneDelegate {
+class SceneDelegate: UIResponder, UIWindowSceneDelegate, AuthServiceDelegate {
 
     var window: UIWindow?
 
@@ -18,6 +18,18 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window?.windowScene = windowScene
         window?.rootViewController = AuthorizationController()
         window?.makeKeyAndVisible()
+    }
+    
+    func authServiceShouldPresent(viewController: UIViewController) {
+        window?.rootViewController?.present(viewController, animated: true)
+    }
+    
+    func authServiceSignIn() {
+        print(#function)
+    }
+    
+    func authServiceSignInDidFaill() {
+        print(#function)
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

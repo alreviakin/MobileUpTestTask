@@ -13,6 +13,7 @@
 		AE0D2E5F29F2CB4D006108DC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AE0D2E5E29F2CB4D006108DC /* Assets.xcassets */; };
 		AE0D2E6229F2CB4D006108DC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AE0D2E6029F2CB4D006108DC /* LaunchScreen.storyboard */; };
 		AE0D2E7029F2CC29006108DC /* AuthorizationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE0D2E6F29F2CC29006108DC /* AuthorizationController.swift */; };
+		AE0D2E7329F2CEDD006108DC /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE0D2E7229F2CEDD006108DC /* AuthService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		AE0D2E6129F2CB4D006108DC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AE0D2E6329F2CB4D006108DC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AE0D2E6F29F2CC29006108DC /* AuthorizationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationController.swift; sourceTree = "<group>"; };
+		AE0D2E7229F2CEDD006108DC /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		F172A9841807AF2CDF1C7CD7 /* Pods-MobileUpTestTask.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MobileUpTestTask.debug.xcconfig"; path = "Target Support Files/Pods-MobileUpTestTask/Pods-MobileUpTestTask.debug.xcconfig"; sourceTree = "<group>"; };
 		FADE3C4B0D736F145293BC1C /* Pods-MobileUpTestTask.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MobileUpTestTask.release.xcconfig"; path = "Target Support Files/Pods-MobileUpTestTask/Pods-MobileUpTestTask.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -78,6 +80,7 @@
 		AE0D2E5429F2CB4C006108DC /* MobileUpTestTask */ = {
 			isa = PBXGroup;
 			children = (
+				AE0D2E7129F2CED3006108DC /* Service */,
 				AE0D2E6929F2CB64006108DC /* Application */,
 				AE0D2E6D29F2CB9F006108DC /* Model */,
 				AE0D2E6E29F2CBA5006108DC /* Views */,
@@ -126,6 +129,14 @@
 			children = (
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		AE0D2E7129F2CED3006108DC /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				AE0D2E7229F2CEDD006108DC /* AuthService.swift */,
+			);
+			path = Service;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -245,6 +256,7 @@
 				AE0D2E7029F2CC29006108DC /* AuthorizationController.swift in Sources */,
 				AE0D2E5629F2CB4C006108DC /* AppDelegate.swift in Sources */,
 				AE0D2E5829F2CB4C006108DC /* SceneDelegate.swift in Sources */,
+				AE0D2E7329F2CEDD006108DC /* AuthService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
