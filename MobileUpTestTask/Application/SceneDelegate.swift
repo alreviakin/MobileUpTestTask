@@ -48,13 +48,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate, AuthServiceDelegate {
     
     func authServiceSignInDidFaill() {
         window?.rootViewController = AuthorizationController()
-        let alert = UIAlertController(title: "Ошибка авторизации")
+        let alert = UIAlertController(title: R.Error.authorization)
         window?.rootViewController?.present(alert, animated: true)
     }
     
     func authServiceWillDismiss(viewContoller: UIViewController) {
         window?.rootViewController = AuthorizationController()
-        let alert = UIAlertController(title: "Вы не были авторизованы")
+        let alert = UIAlertController(title: R.Error.notLogged)
         window?.rootViewController?.present(alert, animated: true)
     }
 
@@ -84,12 +84,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate, AuthServiceDelegate {
         // Called as the scene transitions from the foreground to the background.
         // Use this method to save data, release shared resources, and store enough scene-specific state information
         // to restore the scene back to its current state.
-    }
-}
-
-extension SceneDelegate {
-    @objc func done() {
-        print(1)
     }
 }
 

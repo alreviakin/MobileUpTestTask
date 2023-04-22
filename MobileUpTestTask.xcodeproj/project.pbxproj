@@ -23,6 +23,7 @@
 		AE0D2E8129F42567006108DC /* PhotoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE0D2E8029F42567006108DC /* PhotoController.swift */; };
 		AE0D2E8429F481AE006108DC /* UIAlertController + ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE0D2E8329F481AE006108DC /* UIAlertController + ext.swift */; };
 		AE0D2E8629F484DC006108DC /* NSObject + Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE0D2E8529F484DC006108DC /* NSObject + Ext.swift */; };
+		AE0D2E8B29F48E70006108DC /* Resources.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE0D2E8A29F48E70006108DC /* Resources.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +45,8 @@
 		AE0D2E8029F42567006108DC /* PhotoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoController.swift; sourceTree = "<group>"; };
 		AE0D2E8329F481AE006108DC /* UIAlertController + ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController + ext.swift"; sourceTree = "<group>"; };
 		AE0D2E8529F484DC006108DC /* NSObject + Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject + Ext.swift"; sourceTree = "<group>"; };
+		AE0D2E8829F48CBA006108DC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		AE0D2E8A29F48E70006108DC /* Resources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resources.swift; sourceTree = "<group>"; };
 		F172A9841807AF2CDF1C7CD7 /* Pods-MobileUpTestTask.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MobileUpTestTask.debug.xcconfig"; path = "Target Support Files/Pods-MobileUpTestTask/Pods-MobileUpTestTask.debug.xcconfig"; sourceTree = "<group>"; };
 		FADE3C4B0D736F145293BC1C /* Pods-MobileUpTestTask.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MobileUpTestTask.release.xcconfig"; path = "Target Support Files/Pods-MobileUpTestTask/Pods-MobileUpTestTask.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -168,10 +171,19 @@
 		AE0D2E8229F48192006108DC /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				AE0D2E8929F48E50006108DC /* Resources */,
 				AE0D2E8329F481AE006108DC /* UIAlertController + ext.swift */,
 				AE0D2E8529F484DC006108DC /* NSObject + Ext.swift */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		AE0D2E8929F48E50006108DC /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				AE0D2E8A29F48E70006108DC /* Resources.swift */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -297,6 +309,7 @@
 				AE0D2E8429F481AE006108DC /* UIAlertController + ext.swift in Sources */,
 				AE0D2E7729F303DD006108DC /* NetworkService.swift in Sources */,
 				AE0D2E7329F2CEDD006108DC /* AuthService.swift in Sources */,
+				AE0D2E8B29F48E70006108DC /* Resources.swift in Sources */,
 				AE0D2E8629F484DC006108DC /* NSObject + Ext.swift in Sources */,
 				AE0D2E7929F30499006108DC /* API.swift in Sources */,
 				AE0D2E7F29F312DB006108DC /* PhotosCell.swift in Sources */,
@@ -311,6 +324,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				AE0D2E6129F2CB4D006108DC /* Base */,
+				AE0D2E8829F48CBA006108DC /* en */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -322,6 +336,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -382,6 +397,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -443,6 +459,7 @@
 				DEVELOPMENT_TEAM = T7653YUNND;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MobileUpTestTask/SupportingFiles/Info.plist;
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -475,6 +492,7 @@
 				DEVELOPMENT_TEAM = T7653YUNND;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MobileUpTestTask/SupportingFiles/Info.plist;
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";

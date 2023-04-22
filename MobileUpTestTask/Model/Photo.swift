@@ -8,7 +8,7 @@
 import Foundation
 
 class Photo {
-    let date: String
+    var date: String
     let url: URL?
     var data: Data? = nil
     

@@ -21,14 +21,20 @@ final class AuthorizationController: UIViewController {
     }()
     private let authButton: UIButton = {
        let btn = UIButton()
-        btn.setTitle("Вход через ВК", for: .normal)
-//        btn.titleLabel?.font = UIFont(name: "SF Pro Text", size: 15)
+        btn.setTitle(R.Auth.buttonTitle, for: .normal)
         btn.titleLabel?.font = UIFont.systemFont(ofSize: 15)
         btn.backgroundColor = .black
         btn.setTitleColor(.white, for: .normal)
         btn.layer.cornerRadius = 12
         btn.layer.masksToBounds = true
         return btn
+    }()
+    private var languageSegmented: UISegmentedControl = {
+        let segment = UISegmentedControl(items: ["Ru", "En"])
+        segment.tintColor = .white
+        segment.backgroundColor = .lightGray
+        segment.selectedSegmentIndex = 0
+        return segment
     }()
     
     //MARK: - UI Configure
@@ -40,7 +46,7 @@ final class AuthorizationController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         if currentReachabilityStatus == .notReachable {
-            let alert = UIAlertController(title: "Нет подлючения к интернету")
+            let alert = UIAlertController(title: R.Error.noInternet)
             present(alert, animated: true)
         }
     }
@@ -50,6 +56,8 @@ final class AuthorizationController: UIViewController {
     
         view.addSubview(mobileUpLabel)
         view.addSubview(authButton)
+        self.view.addSubview(languageSegmented)
+        languageSegmented.addTarget(self, action: #selector(changeLanguage), for: .valueChanged)
         authButton.addTarget(self, action: #selector(auth), for: .touchUpInside)
     }
     
@@ -65,6 +73,10 @@ final class AuthorizationController: UIViewController {
             make.bottom.equalToSuperview().offset(-42)
             make.height.equalTo(52)
         }
+        languageSegmented.snp.makeConstraints { make in
+            make.top.equalTo(view.safeAreaLayoutGuide).offset(20)
+            make.right.equalTo(view).offset(-20)
+        }
     }
 }
 
@@ -72,5 +84,10 @@ final class AuthorizationController: UIViewController {
 @objc extension AuthorizationController {
     func auth() {
         AuthService.shared.wakeUpSession()
+    }
+    
+    func changeLanguage() {
+        R.isRussian = !R.isRussian
+        authButton.setTitle(R.Auth.buttonTitle, for: .normal)
     }
 }

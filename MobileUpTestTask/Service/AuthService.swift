@@ -39,13 +39,11 @@ class AuthService: NSObject, VKSdkDelegate, VKSdkUIDelegate {
         VKSdk.wakeUpSession(scope) { [delegate] state, error in
             switch state {
             case .unknown:
-                print(123)
             case .initialized:
                 VKSdk.authorize(scope)
             case .authorized:
                 delegate?.authServiceSignIn()
             default:
-                print(1111)
                 delegate?.authServiceSignInDidFaill()
             }
         }

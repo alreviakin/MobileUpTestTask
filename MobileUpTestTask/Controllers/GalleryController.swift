@@ -20,6 +20,13 @@ class GalleryController: UIViewController {
         return collection
     }()
     private var photos = [Photo]()
+    private var languageSegmented: UISegmentedControl = {
+        let segment = UISegmentedControl(items: ["Ru", "En"])
+        segment.tintColor = .white
+        segment.backgroundColor = .lightGray
+        segment.selectedSegmentIndex = 0
+        return segment
+    }()
     
     //MARK: - Configure UI
     override func viewDidLoad() {
@@ -31,7 +38,7 @@ class GalleryController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         if currentReachabilityStatus == .notReachable {
-            let alert = UIAlertController(title: "Нет подлючения к интернету")
+            let alert = UIAlertController(title: R.Error.noInternet)
             present(alert, animated: true)
         }
     }
@@ -39,9 +46,11 @@ class GalleryController: UIViewController {
     func configure() {
         title = "MobileUp Gallery"
         view.backgroundColor = .white
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Выход", style: .done, target: self, action: #selector(logout))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: R.Gallery.exit, style: .done, target: self, action: #selector(logout))
         navigationItem.rightBarButtonItem?.tintColor = .black
         navigationItem.rightBarButtonItem?.setTitleTextAttributes([NSAttributedString.Key.font: UIFont.systemFont(ofSize: 17, weight: .regular)], for: .normal)
+        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: languageSegmented)
+        languageSegmented.addTarget(self, action: #selector(changeLanguage), for: .valueChanged)
         
         view.addSubview(collection)
         collection.dataSource = self
@@ -72,9 +81,26 @@ extension GalleryController: UICollectionViewDelegate, UICollectionViewDataSourc
 }
 
 //MARK: - Action
-extension GalleryController {
-    @objc func logout() {
+@objc extension GalleryController {
+    func logout() {
         AuthService.shared.logout()
+    }
+    
+    func changeLanguage() {
+        R.isRussian = !R.isRussian
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: R.Gallery.exit, style: .done, target: self, action: #selector(logout))
+        for photo in photos {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "dd MMMM yyyy"
+            if R.Gallery.date == "ru_Ru" {
+                dateFormatter.locale = Locale(identifier: "en_US")
+            } else {
+                dateFormatter.locale = Locale(identifier: "ru_Ru")
+            }
+            let date = dateFormatter.date(from: photo.date)
+            dateFormatter.locale = Locale(identifier: R.Gallery.date)
+            photo.date = dateFormatter.string(from: date!)
+        }
     }
 }
 
@@ -92,15 +118,15 @@ extension GalleryController {
     func request() {
         NetworkService.shared.request(path: API.photosGet, params: ["owner_id": "-128666765", "album_id": "266310117"]) {[weak self] photos, error in
             guard let self else {return}
-            guard let error else {
-                let alert = UIAlertController(title: "Ошибка загрузки данных")
+            guard error == nil else {
+                let alert = UIAlertController(title: R.Error.dataLoading)
                 present(alert, animated: true)
                 return
             }
             if let photos = photos {
                 for responsePhoto in photos.response.items {
                     let dateFormater = DateFormatter()
-                    dateFormater.locale = Locale(identifier: "ru_Ru")
+                    dateFormater.locale = Locale(identifier: R.Gallery.date)
                     dateFormater.dateFormat = "dd MMMM yyyy"
                     let date = Date(timeIntervalSince1970: TimeInterval(responsePhoto.date))
                     let url = URL(string: responsePhoto.sizes.last!.url)

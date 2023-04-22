@@ -85,7 +85,7 @@ class PhotoController: UIViewController {
         if let data = photo.data {
             photoImageView.image = UIImage(data: data)
         } else {
-            let alert = UIAlertController(title: "Ошибка загрузки передачи фотографии")
+            let alert = UIAlertController(title: R.Error.photoTransition)
             present(alert, animated: true)
         }
         title = photo.date
@@ -101,22 +101,20 @@ extension PhotoController {
         activityViewController.completionWithItemsHandler = { type, bool, _, _ in
             if bool {
                 if type == .saveToCameraRoll {
-                    let alert = UIAlertController(title: "Фото успешно сохранено", message: nil, preferredStyle: .alert)
-                    let action = UIAlertAction(title: "Oк", style: .cancel)
-                    alert.addAction(action)
+                    let alert = UIAlertController(title: R.Shared.photoSave)
                     self.present(alert, animated: true)
                 }else if type == .mail {
-                    let alert = UIAlertController(title: "Фото успешно отравленно по почте")
+                    let alert = UIAlertController(title: R.Shared.photoMail)
                     self.present(alert, animated: true)
                 }else if type == .airDrop {
-                    let alert = UIAlertController(title: "Фото успешно отправлено по AirDrop")
+                    let alert = UIAlertController(title: R.Shared.photoAirDrop)
                     self.present(alert, animated: true)
                 } else {
-                    let alert = UIAlertController(title: "Действие выполнено успешно")
+                    let alert = UIAlertController(title: R.Shared.actionDone)
                     self.present(alert, animated: true)
                 }
             } else {
-                let alert = UIAlertController(title: "Действие не было совершено")
+                let alert = UIAlertController(title: R.Shared.actionNotDone)
                 self.present(alert, animated: true)
             }
         }
