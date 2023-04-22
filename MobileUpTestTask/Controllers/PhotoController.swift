@@ -13,6 +13,8 @@ class PhotoController: UIViewController {
        let scroll = UIScrollView()
         scroll.minimumZoomScale = 1.0
         scroll.maximumZoomScale = 3.5
+        scroll.showsVerticalScrollIndicator = false
+        scroll.showsHorizontalScrollIndicator = false
         return scroll
     }()
     private var photoImageView: UIImageView = {
@@ -31,6 +33,8 @@ class PhotoController: UIViewController {
         collection.dataSource = self
         collection.delegate = self
         collection.register(PhotosCell.self, forCellWithReuseIdentifier: "photoCell")
+        collection.showsHorizontalScrollIndicator = false
+        collection.showsVerticalScrollIndicator = false
         return collection
     }()
     private var photos = [Photo]()
@@ -83,20 +87,52 @@ class PhotoController: UIViewController {
         }
         title = photo.date
         self.photos = photos
-//        collection.reloadData()
     }
 }
 
 //MARK: - Action
 extension PhotoController {
     @objc func shared() {
-        
+        let items: [Any] = [photoImageView.image as Any]
+        let activityViewController = UIActivityViewController(activityItems: items, applicationActivities: nil)
+        activityViewController.completionWithItemsHandler = { type, bool, _, _ in
+            if bool {
+                if type == .saveToCameraRoll {
+                    let alert = UIAlertController(title: "Фото успешно сохранено", message: nil, preferredStyle: .alert)
+                    let action = UIAlertAction(title: "Oк", style: .cancel)
+                    alert.addAction(action)
+                    self.present(alert, animated: true)
+                }else if type == .mail {
+                    let alert = UIAlertController(title: "Фото успешно отравленно по почте", message: nil, preferredStyle: .alert)
+                    let action = UIAlertAction(title: "Oк", style: .cancel)
+                    alert.addAction(action)
+                    self.present(alert, animated: true)
+                }else if type == .airDrop {
+                    let alert = UIAlertController(title: "Фото успешно отправлено по AirDrop", message: nil, preferredStyle: .alert)
+                    let action = UIAlertAction(title: "Oк", style: .cancel)
+                    alert.addAction(action)
+                    self.present(alert, animated: true)
+                } else {
+                    let alert = UIAlertController(title: "Действие выполнено успешно", message: nil, preferredStyle: .alert)
+                    let action = UIAlertAction(title: "Oк", style: .cancel)
+                    alert.addAction(action)
+                    self.present(alert, animated: true)
+                }
+            } else {
+                let alert = UIAlertController(title: "Действие не было совершено", message: nil, preferredStyle: .alert)
+                let action = UIAlertAction(title: "Oк", style: .cancel)
+                alert.addAction(action)
+                self.present(alert, animated: true)
+            }
+        }
+        present(activityViewController, animated: true)
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if let data = photos[indexPath.row].data {
             photoImageView.image = UIImage(data: data)
         }
+        title = photos[indexPath.row].date
     }
 }
 
