@@ -15,11 +15,16 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate, AuthServiceDelegate {
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
+        AuthService.shared.delegate = self
         window = UIWindow(frame: windowScene.coordinateSpace.bounds)
         window?.windowScene = windowScene
-        AuthService.shared.delegate = self
-        window?.rootViewController = AuthorizationController()
-        window?.makeKeyAndVisible()
+        VKSdk.wakeUpSession([]) { state, error in
+            if state == .authorized {
+                AuthService.shared.delegate?.authServiceSignIn()
+            }
+        }
+        self.window?.rootViewController = AuthorizationController()
+        self.window?.makeKeyAndVisible()
     }
     
     func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
@@ -42,6 +47,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate, AuthServiceDelegate {
     }
     
     func authServiceSignInDidFaill() {
+        print(#function)
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
