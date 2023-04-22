@@ -58,6 +58,7 @@ final class AuthorizationController: UIViewController {
         view.addSubview(authButton)
         self.view.addSubview(languageSegmented)
         languageSegmented.addTarget(self, action: #selector(changeLanguage), for: .valueChanged)
+        languageSegmented.selectedSegmentIndex = R.isRussian ? 0 : 1
         authButton.addTarget(self, action: #selector(auth), for: .touchUpInside)
     }
     

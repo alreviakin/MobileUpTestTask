@@ -51,6 +51,7 @@ class GalleryController: UIViewController {
         navigationItem.rightBarButtonItem?.setTitleTextAttributes([NSAttributedString.Key.font: UIFont.systemFont(ofSize: 17, weight: .regular)], for: .normal)
         navigationItem.leftBarButtonItem = UIBarButtonItem(customView: languageSegmented)
         languageSegmented.addTarget(self, action: #selector(changeLanguage), for: .valueChanged)
+        languageSegmented.selectedSegmentIndex = R.isRussian ? 0 : 1
         
         view.addSubview(collection)
         collection.dataSource = self
