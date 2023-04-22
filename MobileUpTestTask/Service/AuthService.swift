@@ -38,7 +38,6 @@ class AuthService: NSObject, VKSdkDelegate, VKSdkUIDelegate {
         let scope = ["wall"]
         VKSdk.wakeUpSession(scope) { [delegate] state, error in
             switch state {
-            case .unknown:
             case .initialized:
                 VKSdk.authorize(scope)
             case .authorized:
