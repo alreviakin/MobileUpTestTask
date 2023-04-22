@@ -75,7 +75,7 @@ extension GalleryController {
 extension GalleryController {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let vc = PhotoController()
-        vc.initialize(photo: photos[indexPath.row])
+        vc.initialize(photos: photos, index: indexPath.row)
         navigationController?.pushViewController(vc, animated: true)
     }
 }
