@@ -71,6 +71,15 @@ extension GalleryController {
     }
 }
 
+//MARK: - Transition
+extension GalleryController {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let vc = PhotoController()
+        vc.initialize(photo: photos[indexPath.row])
+        navigationController?.pushViewController(vc, animated: true)
+    }
+}
+
 //MARK: Request
 extension GalleryController {
     func request() {

@@ -20,6 +20,7 @@
 		AE0D2E7B29F3055B006108DC /* Photos.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE0D2E7A29F3055B006108DC /* Photos.swift */; };
 		AE0D2E7D29F305A3006108DC /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE0D2E7C29F305A3006108DC /* Photo.swift */; };
 		AE0D2E7F29F312DB006108DC /* PhotosCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE0D2E7E29F312DB006108DC /* PhotosCell.swift */; };
+		AE0D2E8129F42567006108DC /* PhotoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE0D2E8029F42567006108DC /* PhotoController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		AE0D2E7A29F3055B006108DC /* Photos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photos.swift; sourceTree = "<group>"; };
 		AE0D2E7C29F305A3006108DC /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
 		AE0D2E7E29F312DB006108DC /* PhotosCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosCell.swift; sourceTree = "<group>"; };
+		AE0D2E8029F42567006108DC /* PhotoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoController.swift; sourceTree = "<group>"; };
 		F172A9841807AF2CDF1C7CD7 /* Pods-MobileUpTestTask.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MobileUpTestTask.debug.xcconfig"; path = "Target Support Files/Pods-MobileUpTestTask/Pods-MobileUpTestTask.debug.xcconfig"; sourceTree = "<group>"; };
 		FADE3C4B0D736F145293BC1C /* Pods-MobileUpTestTask.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MobileUpTestTask.release.xcconfig"; path = "Target Support Files/Pods-MobileUpTestTask/Pods-MobileUpTestTask.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -126,6 +128,7 @@
 			children = (
 				AE0D2E6F29F2CC29006108DC /* AuthorizationController.swift */,
 				AE0D2E7429F2DBB2006108DC /* GalleryController.swift */,
+				AE0D2E8029F42567006108DC /* PhotoController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -276,6 +279,7 @@
 				AE0D2E5629F2CB4C006108DC /* AppDelegate.swift in Sources */,
 				AE0D2E7D29F305A3006108DC /* Photo.swift in Sources */,
 				AE0D2E5829F2CB4C006108DC /* SceneDelegate.swift in Sources */,
+				AE0D2E8129F42567006108DC /* PhotoController.swift in Sources */,
 				AE0D2E7729F303DD006108DC /* NetworkService.swift in Sources */,
 				AE0D2E7329F2CEDD006108DC /* AuthService.swift in Sources */,
 				AE0D2E7929F30499006108DC /* API.swift in Sources */,
