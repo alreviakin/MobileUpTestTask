@@ -21,6 +21,8 @@
 		AE0D2E7D29F305A3006108DC /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE0D2E7C29F305A3006108DC /* Photo.swift */; };
 		AE0D2E7F29F312DB006108DC /* PhotosCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE0D2E7E29F312DB006108DC /* PhotosCell.swift */; };
 		AE0D2E8129F42567006108DC /* PhotoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE0D2E8029F42567006108DC /* PhotoController.swift */; };
+		AE0D2E8429F481AE006108DC /* UIAlertController + ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE0D2E8329F481AE006108DC /* UIAlertController + ext.swift */; };
+		AE0D2E8629F484DC006108DC /* NSObject + Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE0D2E8529F484DC006108DC /* NSObject + Ext.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +42,8 @@
 		AE0D2E7C29F305A3006108DC /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
 		AE0D2E7E29F312DB006108DC /* PhotosCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosCell.swift; sourceTree = "<group>"; };
 		AE0D2E8029F42567006108DC /* PhotoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoController.swift; sourceTree = "<group>"; };
+		AE0D2E8329F481AE006108DC /* UIAlertController + ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController + ext.swift"; sourceTree = "<group>"; };
+		AE0D2E8529F484DC006108DC /* NSObject + Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject + Ext.swift"; sourceTree = "<group>"; };
 		F172A9841807AF2CDF1C7CD7 /* Pods-MobileUpTestTask.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MobileUpTestTask.debug.xcconfig"; path = "Target Support Files/Pods-MobileUpTestTask/Pods-MobileUpTestTask.debug.xcconfig"; sourceTree = "<group>"; };
 		FADE3C4B0D736F145293BC1C /* Pods-MobileUpTestTask.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MobileUpTestTask.release.xcconfig"; path = "Target Support Files/Pods-MobileUpTestTask/Pods-MobileUpTestTask.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -116,6 +120,7 @@
 		AE0D2E6A29F2CB84006108DC /* SupportingFiles */ = {
 			isa = PBXGroup;
 			children = (
+				AE0D2E8229F48192006108DC /* Extension */,
 				AE0D2E5E29F2CB4D006108DC /* Assets.xcassets */,
 				AE0D2E6029F2CB4D006108DC /* LaunchScreen.storyboard */,
 				AE0D2E6329F2CB4D006108DC /* Info.plist */,
@@ -158,6 +163,15 @@
 				AE0D2E7829F30499006108DC /* API.swift */,
 			);
 			path = Service;
+			sourceTree = "<group>";
+		};
+		AE0D2E8229F48192006108DC /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				AE0D2E8329F481AE006108DC /* UIAlertController + ext.swift */,
+				AE0D2E8529F484DC006108DC /* NSObject + Ext.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -280,8 +294,10 @@
 				AE0D2E7D29F305A3006108DC /* Photo.swift in Sources */,
 				AE0D2E5829F2CB4C006108DC /* SceneDelegate.swift in Sources */,
 				AE0D2E8129F42567006108DC /* PhotoController.swift in Sources */,
+				AE0D2E8429F481AE006108DC /* UIAlertController + ext.swift in Sources */,
 				AE0D2E7729F303DD006108DC /* NetworkService.swift in Sources */,
 				AE0D2E7329F2CEDD006108DC /* AuthService.swift in Sources */,
+				AE0D2E8629F484DC006108DC /* NSObject + Ext.swift in Sources */,
 				AE0D2E7929F30499006108DC /* API.swift in Sources */,
 				AE0D2E7F29F312DB006108DC /* PhotosCell.swift in Sources */,
 				AE0D2E7B29F3055B006108DC /* Photos.swift in Sources */,

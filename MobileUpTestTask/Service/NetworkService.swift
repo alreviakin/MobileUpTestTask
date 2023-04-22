@@ -11,7 +11,7 @@ class NetworkService {
     static let shared = NetworkService()
     
     func request(path: String, params: [String:String], completion: @escaping (Photos?, Error?) -> Void) {
-        guard let token = AuthService.shared.token else {return}
+        guard let token = AuthService.shared.token else {            return}
         var allParams = params
         allParams["access_token"] = token
         allParams["v"] = API.version

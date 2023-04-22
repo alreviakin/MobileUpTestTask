@@ -13,6 +13,7 @@ protocol AuthServiceDelegate: AnyObject {
     func authServiceSignIn()
     func authServiceSignInDidFaill()
     func authServiceLogout()
+    func authServiceWillDismiss(viewContoller: UIViewController)
 }
 
 class AuthService: NSObject, VKSdkDelegate, VKSdkUIDelegate {
@@ -37,11 +38,14 @@ class AuthService: NSObject, VKSdkDelegate, VKSdkUIDelegate {
         let scope = ["wall"]
         VKSdk.wakeUpSession(scope) { [delegate] state, error in
             switch state {
+            case .unknown:
+                print(123)
             case .initialized:
                 VKSdk.authorize(scope)
             case .authorized:
                 delegate?.authServiceSignIn()
             default:
+                print(1111)
                 delegate?.authServiceSignInDidFaill()
             }
         }
@@ -55,6 +59,8 @@ class AuthService: NSObject, VKSdkDelegate, VKSdkUIDelegate {
     func vkSdkAccessAuthorizationFinished(with result: VKAuthorizationResult!) {
         if result.token != nil {
             delegate?.authServiceSignIn()
+        } else {
+            delegate?.authServiceSignInDidFaill()
         }
     }
     
@@ -68,6 +74,10 @@ class AuthService: NSObject, VKSdkDelegate, VKSdkUIDelegate {
     
     func vkSdkNeedCaptchaEnter(_ captchaError: VKError!) {
         print(captchaError as Any)
+    }
+    
+    func vkSdkWillDismiss(_ controller: UIViewController!) {
+        delegate?.authServiceWillDismiss(viewContoller: controller)
     }
     
 }

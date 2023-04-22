@@ -7,6 +7,7 @@
 
 import UIKit
 import SnapKit
+import VK_ios_sdk
 
 final class AuthorizationController: UIViewController {
     //MARK: - Variables
@@ -35,6 +36,13 @@ final class AuthorizationController: UIViewController {
         super.viewDidLoad()
         configure()
         layout()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        if currentReachabilityStatus == .notReachable {
+            let alert = UIAlertController(title: "Нет подлючения к интернету")
+            present(alert, animated: true)
+        }
     }
     
     private func configure() {

@@ -47,7 +47,15 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate, AuthServiceDelegate {
     }
     
     func authServiceSignInDidFaill() {
-        print(#function)
+        window?.rootViewController = AuthorizationController()
+        let alert = UIAlertController(title: "Ошибка авторизации")
+        window?.rootViewController?.present(alert, animated: true)
+    }
+    
+    func authServiceWillDismiss(viewContoller: UIViewController) {
+        window?.rootViewController = AuthorizationController()
+        let alert = UIAlertController(title: "Вы не были авторизованы")
+        window?.rootViewController?.present(alert, animated: true)
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
@@ -77,7 +85,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate, AuthServiceDelegate {
         // Use this method to save data, release shared resources, and store enough scene-specific state information
         // to restore the scene back to its current state.
     }
+}
 
-
+extension SceneDelegate {
+    @objc func done() {
+        print(1)
+    }
 }
 

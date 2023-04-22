@@ -29,6 +29,13 @@ class GalleryController: UIViewController {
         layout()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        if currentReachabilityStatus == .notReachable {
+            let alert = UIAlertController(title: "Нет подлючения к интернету")
+            present(alert, animated: true)
+        }
+    }
+    
     func configure() {
         title = "MobileUp Gallery"
         view.backgroundColor = .white
@@ -85,6 +92,11 @@ extension GalleryController {
     func request() {
         NetworkService.shared.request(path: API.photosGet, params: ["owner_id": "-128666765", "album_id": "266310117"]) {[weak self] photos, error in
             guard let self else {return}
+            guard let error else {
+                let alert = UIAlertController(title: "Ошибка загрузки данных")
+                present(alert, animated: true)
+                return
+            }
             if let photos = photos {
                 for responsePhoto in photos.response.items {
                     let dateFormater = DateFormatter()

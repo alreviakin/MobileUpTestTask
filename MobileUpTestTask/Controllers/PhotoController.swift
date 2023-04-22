@@ -84,6 +84,9 @@ class PhotoController: UIViewController {
         let photo = photos[index]
         if let data = photo.data {
             photoImageView.image = UIImage(data: data)
+        } else {
+            let alert = UIAlertController(title: "Ошибка загрузки передачи фотографии")
+            present(alert, animated: true)
         }
         title = photo.date
         self.photos = photos
@@ -103,25 +106,17 @@ extension PhotoController {
                     alert.addAction(action)
                     self.present(alert, animated: true)
                 }else if type == .mail {
-                    let alert = UIAlertController(title: "Фото успешно отравленно по почте", message: nil, preferredStyle: .alert)
-                    let action = UIAlertAction(title: "Oк", style: .cancel)
-                    alert.addAction(action)
+                    let alert = UIAlertController(title: "Фото успешно отравленно по почте")
                     self.present(alert, animated: true)
                 }else if type == .airDrop {
-                    let alert = UIAlertController(title: "Фото успешно отправлено по AirDrop", message: nil, preferredStyle: .alert)
-                    let action = UIAlertAction(title: "Oк", style: .cancel)
-                    alert.addAction(action)
+                    let alert = UIAlertController(title: "Фото успешно отправлено по AirDrop")
                     self.present(alert, animated: true)
                 } else {
-                    let alert = UIAlertController(title: "Действие выполнено успешно", message: nil, preferredStyle: .alert)
-                    let action = UIAlertAction(title: "Oк", style: .cancel)
-                    alert.addAction(action)
+                    let alert = UIAlertController(title: "Действие выполнено успешно")
                     self.present(alert, animated: true)
                 }
             } else {
-                let alert = UIAlertController(title: "Действие не было совершено", message: nil, preferredStyle: .alert)
-                let action = UIAlertAction(title: "Oк", style: .cancel)
-                alert.addAction(action)
+                let alert = UIAlertController(title: "Действие не было совершено")
                 self.present(alert, animated: true)
             }
         }
